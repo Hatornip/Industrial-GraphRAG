@@ -7,15 +7,9 @@ st.set_page_config(page_title="Industrial GraphRAG", layout="wide")
 
 @st.cache_resource
 def load_nlp():
-    try:
-        return spacy.load("en_core_web_sm")
-    except:
-        import os
-        os.system("python -m spacy download en_core_web_sm")
-        return spacy.load("en_core_web_sm")
+    return spacy.load("en_core_web_sm")
 
 nlp = load_nlp()
-
 
 def extract_relations(text):
     G = nx.DiGraph()
@@ -116,3 +110,4 @@ with col2:
             
     else:
         st.warning("Veuillez d'abord générer le graphe depuis la colonne de gauche.")
+
